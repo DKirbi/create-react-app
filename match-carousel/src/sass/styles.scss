@@ -1,0 +1,203 @@
+$desktop: 870px;
+$tablet: 450px;
+$phone: 320px;
+
+$white: #fff;
+$secondHalf: #ff9600;
+$notStarted: #4d4d4d;
+$ended: rgb(0, 107, 0);
+
+body {
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+}
+
+@mixin font-overrides {
+  margin: 0;
+  font-weight: 300;
+  font-family: 'Open Sans', sans-serif;
+}
+
+p,
+h1,
+h2,
+h3,
+h4 {
+  @include font-overrides;
+}
+
+@mixin background {
+  background-blend-mode: darken;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.second-half {
+  background: rgba(0, 0, 0, 0.7) url('/src/Assets/bg-live.jpg');
+  @include background;
+}
+
+.ended {
+  background: rgba(0, 0, 0, 0.7) url('/src/Assets/bg-postmatch.jpg');
+  @include background;
+}
+.not-started {
+  background: rgba(0, 0, 0, 0.7) url('/src/Assets/bg-prematch.jpg');
+  @include background;
+}
+
+.carousel {
+  max-width: $phone;
+  .slide {
+    min-height: 100%;
+    border-radius: 0.75rem;
+    padding: 5px 15px 25px 15px;
+    .match-info {
+      text-align: center;
+      .tournament-name {
+        font-size: 1rem;
+      }
+      .category-name {
+        font-size: 0.75rem;
+        @media (min-width: $tablet) {
+          font-size: 1rem;
+        }
+      }
+    }
+    .player-items {
+      display: flex;
+      justify-content: space-around;
+      padding: 2rem 0;
+      .playing-teams {
+        text-align: center;
+        font-size: 3rem;
+
+        .team-image {
+          height: 50px;
+          width: auto;
+        }
+        .country {
+          display: none;
+        }
+        .abbreviation {
+          margin-top: -20px;
+          font-size: 1rem;
+        }
+      }
+      .score {
+        text-align: center;
+        font-size: 1rem;
+        @media (min-width: $tablet) {
+          font-size: 1rem;
+        }
+        .time {
+          font-size: 1rem;
+        }
+        .date {
+          font-size: 0.7rem;
+          margin-top: -5px;
+        }
+      }
+    }
+    .match-state {
+      p {
+        background-color: $notStarted;
+        width: fit-content;
+        padding: 0 25px;
+        border-radius: 5px;
+        margin: auto;
+        font-size: 0.75rem;
+      }
+    }
+  }
+}
+
+@media (min-width: $tablet) {
+  .carousel {
+    max-width: $tablet;
+    .slide {
+      padding: 5px 25px 20px 25px;
+      .match-info {
+        .tournament-name {
+          font-size: 1.5rem;
+        }
+        .category-name {
+          font-size: 1rem;
+        }
+      }
+      .player-items {
+        .playing-teams {
+          .country {
+            display: block;
+            margin-top: -15px;
+            font-size: 1.5rem;
+          }
+          .abbreviation {
+            display: none;
+          }
+        }
+        .score {
+          font-size: 1.5rem;
+          .time {
+            font-size: 1.5rem;
+          }
+          .date {
+            font-size: 1.25rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: $desktop) {
+  .carousel {
+    max-width: $desktop;
+    .slide {
+      padding: 5px 25px 50px 25px;
+      .match-info {
+        .tournament-name {
+          font-size: 2.5rem;
+        }
+        .category-name {
+          font-size: 1.5rem;
+        }
+      }
+      .player-items {
+        padding: 5rem 0;
+        .playing-teams {
+          .team-image {
+            height: 150px;
+          }
+          .country {
+            display: block;
+            margin-top: -20px;
+            font-size: 3rem;
+          }
+          .abbreviation {
+            display: none;
+          }
+        }
+        .score {
+          margin-top: 20px;
+          font-size: 2rem;
+          .time {
+            font-size: 2rem;
+            margin-top: 5px;
+          }
+          .date {
+            font-size: 1.5rem;
+          }
+        }
+      }
+      .match-state {
+        p {
+          padding: 0 25px;
+          border-radius: 5px;
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}

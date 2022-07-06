@@ -1,25 +1,10 @@
-import logo from './logo.svg';
-import './App.css';
-import { useState } from 'react';
-import axios from 'axios';
+import './css/styles.css';
+import MatchCarousel from './Components/MatchCarousel';
 
 function App() {
-  const [quote, setQuote] = useState('');
-  const getQuote = () => {
-    axios
-      .get('https://api.quotable.io/random')
-      .then(res => {
-        console.log(res.data.content);
-        setQuote(res.data.content);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  };
   return (
     <div className="App">
-      <button onClick={getQuote}>Get Quote</button>
-      {quote && <p>{quote}</p>}
+      <MatchCarousel />
     </div>
   );
 }

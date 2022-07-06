@@ -1,0 +1,180 @@
+body {
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+}
+
+p,
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  font-weight: 300;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.second-half {
+  background: rgba(0, 0, 0, 0.7) url('/src/Assets/bg-live.jpg');
+  background-blend-mode: darken;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.ended {
+  background: rgba(0, 0, 0, 0.7) url('/src/Assets/bg-postmatch.jpg');
+  background-blend-mode: darken;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.not-started {
+  background: rgba(0, 0, 0, 0.7) url('/src/Assets/bg-prematch.jpg');
+  background-blend-mode: darken;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.carousel {
+  max-width: 320px;
+}
+.carousel .slide {
+  min-height: 100%;
+  border-radius: 0.75rem;
+  padding: 5px 15px 25px 15px;
+}
+.carousel .slide .match-info {
+  text-align: center;
+}
+.carousel .slide .match-info .tournament-name {
+  font-size: 1rem;
+}
+.carousel .slide .match-info .category-name {
+  font-size: 0.75rem;
+}
+@media (min-width: 450px) {
+  .carousel .slide .match-info .category-name {
+    font-size: 1rem;
+  }
+}
+.carousel .slide .player-items {
+  display: flex;
+  justify-content: space-around;
+  padding: 2rem 0;
+}
+.carousel .slide .player-items .playing-teams {
+  text-align: center;
+  font-size: 3rem;
+}
+.carousel .slide .player-items .playing-teams .team-image {
+  height: 50px;
+  width: auto;
+}
+.carousel .slide .player-items .playing-teams .country {
+  display: none;
+}
+.carousel .slide .player-items .playing-teams .abbreviation {
+  margin-top: -20px;
+  font-size: 1rem;
+}
+.carousel .slide .player-items .score {
+  text-align: center;
+  font-size: 1rem;
+}
+@media (min-width: 450px) {
+  .carousel .slide .player-items .score {
+    font-size: 1rem;
+  }
+}
+.carousel .slide .player-items .score .time {
+  font-size: 1rem;
+}
+.carousel .slide .player-items .score .date {
+  font-size: 0.7rem;
+  margin-top: -5px;
+}
+.carousel .slide .match-state p {
+  background-color: #4d4d4d;
+  width: fit-content;
+  padding: 0 25px;
+  border-radius: 5px;
+  margin: auto;
+  font-size: 0.75rem;
+}
+
+@media (min-width: 450px) {
+  .carousel {
+    max-width: 450px;
+  }
+  .carousel .slide {
+    padding: 5px 25px 20px 25px;
+  }
+  .carousel .slide .match-info .tournament-name {
+    font-size: 1.5rem;
+  }
+  .carousel .slide .match-info .category-name {
+    font-size: 1rem;
+  }
+  .carousel .slide .player-items .playing-teams .country {
+    display: block;
+    margin-top: -15px;
+    font-size: 1.5rem;
+  }
+  .carousel .slide .player-items .playing-teams .abbreviation {
+    display: none;
+  }
+  .carousel .slide .player-items .score {
+    font-size: 1.5rem;
+  }
+  .carousel .slide .player-items .score .time {
+    font-size: 1.5rem;
+  }
+  .carousel .slide .player-items .score .date {
+    font-size: 1.25rem;
+  }
+}
+
+@media (min-width: 870px) {
+  .carousel {
+    max-width: 870px;
+  }
+  .carousel .slide {
+    padding: 5px 25px 50px 25px;
+  }
+  .carousel .slide .match-info .tournament-name {
+    font-size: 2.5rem;
+  }
+  .carousel .slide .match-info .category-name {
+    font-size: 1.5rem;
+  }
+  .carousel .slide .player-items {
+    padding: 5rem 0;
+  }
+  .carousel .slide .player-items .playing-teams .team-image {
+    height: 150px;
+  }
+  .carousel .slide .player-items .playing-teams .country {
+    display: block;
+    margin-top: -20px;
+    font-size: 3rem;
+  }
+  .carousel .slide .player-items .playing-teams .abbreviation {
+    display: none;
+  }
+  .carousel .slide .player-items .score {
+    margin-top: 20px;
+    font-size: 2rem;
+  }
+  .carousel .slide .player-items .score .time {
+    font-size: 2rem;
+    margin-top: 5px;
+  }
+  .carousel .slide .player-items .score .date {
+    font-size: 1.5rem;
+  }
+  .carousel .slide .match-state p {
+    padding: 0 25px;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+}

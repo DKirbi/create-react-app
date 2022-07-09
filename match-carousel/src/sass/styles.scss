@@ -8,7 +8,7 @@ $notStarted: #4d4d4d;
 $ended: rgb(0, 107, 0);
 
 body {
-  color: white;
+  color: rgb(0, 115, 255);
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
 }
@@ -200,4 +200,17 @@ h4 {
       }
     }
   }
+}
+
+.right-arrow {
+  height: 100px;
+  width: 100px;
+}
+
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
 }

@@ -1,5 +1,5 @@
 body {
-  color: white;
+  color: #0073ff;
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
 }
@@ -177,4 +177,17 @@ h4 {
     border-radius: 5px;
     font-size: 1rem;
   }
+}
+
+.right-arrow {
+  height: 100px;
+  width: 100px;
+}
+
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
 }

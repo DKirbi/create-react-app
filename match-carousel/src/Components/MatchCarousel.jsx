@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Slide from './Slide';
+import Slide, { notStarted, matchStates, secondHalf, halftime, ended, firstHalf } from './Slide';
 import {FaArrowAltCircleRight, FaArrowAltCircleLeft} from 'react-icons/fa';
-import MatchInfo from './MatchInfo';
+
 
 
 function MatchCarousel() {
@@ -24,7 +24,6 @@ function MatchCarousel() {
         
         //Gets all Countries for sport Soccer
         const soccer = sportCategories[0].realcategories;
-        console.log(soccer);
         
         
 
@@ -39,8 +38,8 @@ function MatchCarousel() {
         });
         // console.log(soccerMatchTournaments);
         setCountry(soccer);
-        setMatchInfo(soccerMatchTournaments);
-        setSoccerMatch(soccerMatch);
+        // setMatchInfo(soccerMatchTournaments);
+        // setSoccerMatch(soccerMatch);
         // const teamAwayNames = soccerMatch.map(function(matchData) {
         //   return ( matchData.map(function(anotherMatchData) {
         //     return (anotherMatchData.teams.away.name);
@@ -58,10 +57,10 @@ function MatchCarousel() {
         // console.log(teamAwayNames);
         // setTeamAwayName(teamAwNameList)
 
-        const tournaments = soccer.map(function(soccerTournaments) {
-          return (soccerTournaments.tournaments)
+        // const tournaments = soccer.map(function(soccerTournaments) {
+        //   return (soccerTournaments.tournaments)
           
-        })
+        // })
 
        
         // console.log(sportCategories);
@@ -95,7 +94,6 @@ function MatchCarousel() {
     };
 //////END OF AXIOS SCHTEBACLE!!!
 
-    console.log(matchInfo);
     // console.log(Matches);
 
 
@@ -106,14 +104,23 @@ function MatchCarousel() {
      const nextSlide = () => {
       setCurrent(current === length - 1 ? 0 : current + 1)
     }
-
+    if(matchStates === 'Not started') {
+      console.log('BLOB');
+    }
     
     // console.log(current);
     
     return (
       <>
         <div className="carousel">
-          <Slide />
+          <Slide 
+            ended={matchStates === 'Ended' ? ' ended' : ' '}
+            secondHalf={matchStates === '2nd half' ? ' second-half' : ''}
+            halftime={matchStates === 'Half time' ? ' second-half' : ''}
+            firstHalf={matchStates ==='First half' ? ' second-half' : ''}
+            notStarted={matchStates === 'Not started' ? ' not-started' : ''}
+
+          />
           <div className="navigation-dots"></div>
         </div>
 

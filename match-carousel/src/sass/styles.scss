@@ -8,7 +8,7 @@ $notStarted: #4d4d4d;
 $ended: rgb(0, 107, 0);
 
 body {
-  color: rgb(0, 115, 255);
+  color: white;
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
 }
@@ -34,17 +34,33 @@ h4 {
 }
 
 .second-half {
-  background: rgba(0, 0, 0, 0.7) url('/src/Assets/bg-live.jpg');
+  background: rgba(0, 0, 0, 0.7) url('/src/Assets/bg-live.jpg') !important;
   @include background;
 }
 
 .ended {
-  background: rgba(0, 0, 0, 0.7) url('/src/Assets/bg-postmatch.jpg');
+  background: rgba(0, 0, 0, 0.7) url('/src/Assets/bg-postmatch.jpg') !important;
   @include background;
 }
 .not-started {
   background: rgba(0, 0, 0, 0.7) url('/src/Assets/bg-prematch.jpg');
   @include background;
+}
+
+.mstate-sh {
+  p {
+    background-color: $secondHalf !important;
+  }
+}
+.mstate-end {
+  p {
+    background-color: $ended !important;
+  }
+}
+.mstate-ns {
+  p {
+    background-color: $notStarted !important;
+  }
 }
 
 .carousel {
@@ -81,7 +97,7 @@ h4 {
           display: none;
         }
         .abbreviation {
-          margin-top: -20px;
+          margin-top: -5px;
           font-size: 1rem;
         }
       }
@@ -108,6 +124,7 @@ h4 {
         border-radius: 5px;
         margin: auto;
         font-size: 0.75rem;
+        text-transform: uppercase;
       }
     }
   }

@@ -1,5 +1,5 @@
 body {
-  color: #0073ff;
+  color: white;
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
 }
@@ -15,14 +15,14 @@ h4 {
 }
 
 .second-half {
-  background: rgba(0, 0, 0, 0.7) url('/src/Assets/bg-live.jpg');
+  background: rgba(0, 0, 0, 0.7) url('/src/Assets/bg-live.jpg') !important;
   background-blend-mode: darken;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .ended {
-  background: rgba(0, 0, 0, 0.7) url('/src/Assets/bg-postmatch.jpg');
+  background: rgba(0, 0, 0, 0.7) url('/src/Assets/bg-postmatch.jpg') !important;
   background-blend-mode: darken;
   background-repeat: no-repeat;
   background-size: cover;
@@ -33,6 +33,18 @@ h4 {
   background-blend-mode: darken;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.mstate-sh p {
+  background-color: #ff9600 !important;
+}
+
+.mstate-end p {
+  background-color: #006b00 !important;
+}
+
+.mstate-ns p {
+  background-color: #4d4d4d !important;
 }
 
 .carousel {
@@ -74,7 +86,7 @@ h4 {
   display: none;
 }
 .carousel .slide .player-items .playing-teams .abbreviation {
-  margin-top: -20px;
+  margin-top: -5px;
   font-size: 1rem;
 }
 .carousel .slide .player-items .score {
@@ -100,6 +112,7 @@ h4 {
   border-radius: 5px;
   margin: auto;
   font-size: 0.75rem;
+  text-transform: uppercase;
 }
 
 @media (min-width: 450px) {

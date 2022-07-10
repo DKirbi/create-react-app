@@ -33,16 +33,16 @@ h4 {
   background-size: cover;
 }
 
-.second-half {
+.liveBg {
   background: rgba(0, 0, 0, 0.7) url('/src/Assets/bg-live.jpg') !important;
   @include background;
 }
 
-.ended {
+.endedBg {
   background: rgba(0, 0, 0, 0.7) url('/src/Assets/bg-postmatch.jpg') !important;
   @include background;
 }
-.not-started {
+.not-startedBg {
   background: rgba(0, 0, 0, 0.7) url('/src/Assets/bg-prematch.jpg');
   @include background;
 }

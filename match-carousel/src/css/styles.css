@@ -14,21 +14,21 @@ h4 {
   font-family: 'Open Sans', sans-serif;
 }
 
-.second-half {
+.liveBg {
   background: rgba(0, 0, 0, 0.7) url('/src/Assets/bg-live.jpg') !important;
   background-blend-mode: darken;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-.ended {
+.endedBg {
   background: rgba(0, 0, 0, 0.7) url('/src/Assets/bg-postmatch.jpg') !important;
   background-blend-mode: darken;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-.not-started {
+.not-startedBg {
   background: rgba(0, 0, 0, 0.7) url('/src/Assets/bg-prematch.jpg');
   background-blend-mode: darken;
   background-repeat: no-repeat;

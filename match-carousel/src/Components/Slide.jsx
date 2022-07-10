@@ -15,6 +15,9 @@ function Slide(props) {
   useEffect(() => {
     getData();
   }, []);
+  const [isEnded, setEnded] = useState(false);
+  
+    
 
   const [country, setCountry] = useState([]);
   const [current, setCurrent] = useState(0);
@@ -39,19 +42,21 @@ function Slide(props) {
   return (
     <>
     {country.map((countries) => {
+      
+      matchStates = countries.tournaments[0].matches[0].status.name;
+    
+      secondHalf = matchStates === '2nd half';
+      halftime = matchStates === 'Halftime';
+      ended = matchStates === 'Ended';
+      firstHalf = matchStates === '1st half';
+      notStarted = matchStates === 'Not started';
 
-    matchStates = countries.tournaments[0].matches[0].status.name;
-
-    secondHalf = matchStates === '2nd half';
-    halftime = matchStates === 'halftime';
-    ended = matchStates === 'Ended';
-    firstHalf = matchStates === '1st half';
-    notStarted = matchStates === 'Not started';
+    
     
     
       return (
         <>
-            <div className={`slide not-started ${props.ended} ${props.secondHalf} ${props.firstHalf} ${props.halftime} ${props.notStarted}`}>
+            <div className={`slide not-startedBg ${ended ? 'endedBg' : ' '} ${halftime || secondHalf ? 'liveBg' : ''}`}>
               <MatchInfo 
                 tournamentName={(countries.tournaments[0].name) + ' - ' + (countries.tournaments[0].seasontypename)}
                 countryName={countries.name}
@@ -79,6 +84,7 @@ function Slide(props) {
                 secondHalf={secondHalf ? 'mstate-sh' : ' '}
                 ended={ended ? 'mstate-end' : ' '}
                 halftime={halftime ? 'mstate-sh' : ''}
+                className='bob'
               />
             </div>
             <div> 

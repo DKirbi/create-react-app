@@ -10,6 +10,9 @@ function MatchCarousel() {
     getData();
   }, []);
 
+
+
+
   const [country, setCountry] = useState([]);
   const [matchInfo, setMatchInfo] = useState([]);
   const [Matches, setSoccerMatch] = useState([]);
@@ -104,21 +107,14 @@ function MatchCarousel() {
      const nextSlide = () => {
       setCurrent(current === length - 1 ? 0 : current + 1)
     }
-    if(matchStates === 'Not started') {
-      console.log('BLOB');
-    }
-    
+   
     // console.log(current);
     
     return (
       <>
         <div className="carousel">
           <Slide 
-            ended={matchStates === 'Ended' ? ' ended' : ' '}
-            secondHalf={matchStates === '2nd half' ? ' second-half' : ''}
-            halftime={matchStates === 'Half time' ? ' second-half' : ''}
-            firstHalf={matchStates ==='First half' ? ' second-half' : ''}
-            notStarted={matchStates === 'Not started' ? ' not-started' : ''}
+            
 
           />
           <div className="navigation-dots"></div>

@@ -1,186 +1,176 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Slide, { notStarted, matchStates, secondHalf, halftime, ended, firstHalf } from './Slide';
-import {FaArrowAltCircleRight, FaArrowAltCircleLeft} from 'react-icons/fa';
+import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from 'react-icons/fa';
+import MatchInfo from './MatchInfo';
+import MatchState from './MatchState';
+import PlayingTeam from './PlayingTeam';
+import Score from './Score';
+let matchStates;
+let secondHalf;
+let halftime;
+let firstHalf;
+let ended;
+let notStarted;
 
-
-
-function MatchCarousel() {
+function MatchCarousel(props) {
   useEffect(() => {
     getData();
   }, []);
 
-
-
-
-  const [country, setCountry] = useState([]);
-  const [matchInfo, setMatchInfo] = useState([]);
-  const [Matches, setSoccerMatch] = useState([]);
-  const [sports, setSports] = useState([]);
-  const [current, setCurrent] = useState(0);
   const getData = async () => {
-      try {
-        const res = await axios.get(
-          'https://lmt.fn.sportradar.com/demolmt/en/Etc:UTC/gismo/event_fullfeed/0/1/12074'
-        );
-        const sportCategories = res.data.doc[0].data;
-        
-        //Gets all Countries for sport Soccer
-        const soccer = sportCategories[0].realcategories;
-        
-        
+    try {
+      const res = await axios.get(
+        'https://lmt.fn.sportradar.com/demolmt/en/Etc:UTC/gismo/event_fullfeed/0/1/12074'
+      );
+      const sportCategories = res.data.doc[0].data;
 
-        //returns all the soccerMatch matches
-        const soccerMatch = soccer.map(function(match) {
-          return (match.tournaments[0].matches[0]);
-        });
-        
+      let soccer = sportCategories[0].realcategories.slice(0,10);
 
-        const soccerMatchTournaments = soccer.map(function(match) {
-          return (match.tournaments[0]);
-        });
-        // console.log(soccerMatchTournaments);
-        setCountry(soccer);
-        // setMatchInfo(soccerMatchTournaments);
-        // setSoccerMatch(soccerMatch);
-        // const teamAwayNames = soccerMatch.map(function(matchData) {
-        //   return ( matchData.map(function(anotherMatchData) {
-        //     return (anotherMatchData.teams.away.name);
-        //   }));
-        // });
-        // const teamAwayNames = soccerMatch.map(function(matchData) {
-        //   return ( matchData.map(function(anotherMatchData) {
-        //     return (anotherMatchData.teams.away)
+     
+      setSlide(soccer);
 
-        //   }));
-        // });
-        
-        
-
-        // console.log(teamAwayNames);
-        // setTeamAwayName(teamAwNameList)
-
-        // const tournaments = soccer.map(function(soccerTournaments) {
-        //   return (soccerTournaments.tournaments)
-          
-        // })
-
-       
-        // console.log(sportCategories);
-        // console.log(soccer);  
-        // for(let i = 0; i < sportCategories.length; i++) {
-        //     console.log(sportCategories._id)
-        // }
-
-
-        // setSports(sportCategories);  // Gets all the sports
-
-       
-
-       
-
-//With this hook we save all the sport countries into the 'sports' variable
-        setSports(soccer);
-        
-       
-        // soccer.map(function(element) {
-        //   console.log(element.tournaments[0].matches);
-
-
-        // }) 
-
-
-      } catch (err) {
-        alert(err.message);
-      }
-      
-    };
-//////END OF AXIOS SCHTEBACLE!!!
-
-    // console.log(Matches);
-
-
-
-
-    const length = sports.length;
-
-     const nextSlide = () => {
-      setCurrent(current === length - 1 ? 0 : current + 1)
+      //With this hook we save all the sport slides into the 'sports' variable
+      // setSports(soccer);
+    } catch (err) {
+      alert(err.message);
     }
-   
-    // console.log(current);
-    
-    return (
-      <>
-        <div className="carousel">
-          <Slide 
-            
-
-          />
-          <div className="navigation-dots"></div>
-        </div>
-
-        <FaArrowAltCircleRight className="right-arrow" onClick={nextSlide} />
-        {/* {sports.map((sport, index) => {
-          return (
-            <div>
-              <li key={index}>{sport.name}</li>
-            </div>
-          );
-        })} */}
-
-        {country.map((countries) => {
-          return (
-            <>
-            <li>{(countries.tournaments[0].name) + ' - ' + (countries.tournaments[0].seasontypename)}</li>
-            <li>{countries.name}</li>
-            <li>{countries.tournaments[0].matches[0].teams.away.name}<img src={'https://img.sportradar.com/ls/crest/big/'+ countries.tournaments[0].matches[0].teams.away.uid + '.png'} /></li>
-            <li>{countries.tournaments[0].matches[0].teams.home.name}<img src={'https://img.sportradar.com/ls/crest/big/'+ countries.tournaments[0].matches[0].teams.home.uid + '.png'} /></li>
-            <li>{countries.tournaments[0].matches[0].status.name}</li>
-            <li>{countries.tournaments[0].matches[0]._dt.time}</li>
-            <li>{countries.tournaments[0].matches[0]._dt.date}</li>
-            
-            
-            </>
-          )
-        })
-
-        }
-        {matchInfo.map((matchInf) => {
-          return (
-            <>
-               <li>{(matchInf.name) + ' - ' + (matchInf.seasontypename) }</li>
-               <li>{matchInf.matches[0].teams.away.name}</li>
-               <li>{matchInf.matches[0].status.name}</li>
-               <li>{matchInf.matches[0]._dt.time}</li>
-               <li>{matchInf.matches[0]._dt.date}</li>
-            </>
-           
-          );
-        })}
-        
-        {Matches.map((match) => {
-          return (
-            <div>
-              <li key={match.teams.away.uid} className="red">{match.teams.away.name} <img src={'https://img.sportradar.com/ls/crest/big/'+ match.teams.away.uid + '.png'} /></li>
-              <li key={match.teams.home.uid} className="green">{match.teams.home.name} <img src={'https://img.sportradar.com/ls/crest/big/'+ match.teams.home.uid + '.png'} /></li>
-              <p>{match.status.name}</p>
-              <p>{match._dt.time}</p>
-              <p>{match._dt.date}</p>
-            </div>
-          );
-        })}
-        
-        {/* {teamAwayName.map((tAway, index) => {
-          return (
-            <li key={index}>
-              {tAway}
-            </li>
-          );
-        })} */}
-      </>
-    );
   };
 
+  const [slide, setSlide] = useState([]);
+  const [current, setCurrent] = useState(0);
+
+  const length = slide.length;
+  // console.log(length);
+  const autoScroll = true;
+  let slideInterval;
+  let intervalTime = 3000;
+
+  useEffect(() => {
+    if (autoScroll) {
+      auto();
+    }
+  }, [current]);
+  const nextSlide = () => {
+    setCurrent(current === length - 1 ? 0 : current + 1);
+    console.log(current);
+  };
+
+  function auto() {
+    slideInterval = setInterval(nextSlide, intervalTime);
+  }
+
+  // let indicatorContainer = document.querySelector('.navigation-dots');
+  // let indicators = [];
+  // for(let i = 0; i < length; i++) {
+  //   const dot = document.createElement('div');
+  //   indicatorContainer.appendChild(dot);
+  //   indicators.push(dot);
+  // }
+
+  // slide.forEach(function(_el, _i) {
+  //   const dot = document.createElement('div');
+  //   indicatorContainer.appendChild(dot);
+  //   indicators.push(dot);
+  // }); 
+
+
+  
+
+  return (
+    <>
+      <div className="carousel">
+        <button onClick={nextSlide}>click me</button>
+        {slide.map((slides, index) => {
+          matchStates = slides.tournaments[0].matches[0].status.name;
+          secondHalf = matchStates === '2nd half';
+          halftime = matchStates === 'Halftime';
+          ended = matchStates === 'Ended';
+          firstHalf = matchStates === '1st half';
+          notStarted = matchStates === 'Not started';
+
+          return (
+            <>
+              <div
+                className={`${
+                  index === current
+                    ? 'slide active not-startedBg'
+                    : 'slide not-startedBg'
+                } 
+                  ${ended && 'endedBg'} 
+                  ${halftime || secondHalf && 'liveBg'}
+                  `}
+                key={index}
+              >
+                {index === current && (
+                  <>
+                    <MatchInfo
+                      tournamentName={
+                        slides.tournaments[0].name +
+                        ' - ' +
+                        slides.tournaments[0].seasontypename
+                      }
+                      countryName={slides.name}
+                    />
+                    <div className="player-items">
+                      <PlayingTeam
+                        crest={
+                          'https://img.sportradar.com/ls/crest/big/' +
+                          slides.tournaments[0].matches[0].teams.home.uid +
+                          '.png'
+                        }
+                        crestAlt={
+                          slides.tournaments[0].matches[0].teams.home.abbr
+                        }
+                        teamName={
+                          slides.tournaments[0].matches[0].teams.home.name
+                        }
+                        teamAbr={
+                          slides.tournaments[0].matches[0].teams.home.abbr
+                        }
+                      />
+                      <Score
+                        time={slides.tournaments[0].matches[0]._dt.time}
+                        date={slides.tournaments[0].matches[0]._dt.date}
+                      />
+                      <PlayingTeam
+                        crest={
+                          'https://img.sportradar.com/ls/crest/big/' +
+                          slides.tournaments[0].matches[0].teams.away.uid +
+                          '.png'
+                        }
+                        crestAlt={
+                          slides.tournaments[0].matches[0].teams.away.abbr
+                        }
+                        teamName={
+                          slides.tournaments[0].matches[0].teams.away.name
+                        }
+                        teamAbr={
+                          slides.tournaments[0].matches[0].teams.away.abbr
+                        }
+                      />
+                    </div>
+                    <MatchState
+                      matchState={
+                        slides.tournaments[0].matches[0].status.name
+                      }
+                      secondHalf={secondHalf ? 'mstate-sh' : ' '}
+                      ended={ended ? 'mstate-end' : ' '}
+                      halftime={halftime ? 'mstate-sh' : ''}
+                    />
+                  </>
+                )}
+
+              </div>
+              
+            </>
+          );
+        })}
+      </div>
+
+      <div className="navigation-dots"></div>
+      <FaArrowAltCircleRight className="right-arrow" onClick={nextSlide} />
+    </>
+  );
+}
 
 export default MatchCarousel;

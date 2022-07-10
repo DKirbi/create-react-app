@@ -66,10 +66,11 @@ h4 {
 .carousel {
   max-width: $phone;
   .slide {
-    min-height: 100%;
+    position: relative;
     border-radius: 0.75rem;
-    padding: 5px 15px 25px 15px;
+    padding: 5px 25px 25px 25px;
     .match-info {
+      height: 65px;
       text-align: center;
       .tournament-name {
         font-size: 1rem;
@@ -83,11 +84,13 @@ h4 {
     }
     .player-items {
       display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
       padding: 2rem 0;
+      max-height: 300px;
       .playing-teams {
         text-align: center;
-        font-size: 3rem;
+        font-size: 2rem;
+        max-width: 160px;
 
         .team-image {
           height: 50px;
@@ -102,21 +105,25 @@ h4 {
         }
       }
       .score {
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%);
         text-align: center;
         font-size: 1rem;
-        @media (min-width: $tablet) {
-          font-size: 1rem;
-        }
         .time {
-          font-size: 1rem;
+          font-size: 1.5rem;
         }
         .date {
-          font-size: 0.7rem;
+          font-size: 1rem;
           margin-top: -5px;
         }
       }
     }
     .match-state {
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%);
+      bottom: 10%;
       p {
         background-color: $notStarted;
         width: fit-content;
@@ -130,34 +137,48 @@ h4 {
   }
 }
 
+.slide {
+  display: none;
+}
+
+.slide.active {
+  display: block;
+}
+
 @media (min-width: $tablet) {
   .carousel {
     max-width: $tablet;
     .slide {
-      padding: 5px 25px 20px 25px;
+      padding: 5px 40px 20px 40px;
+      height: 260px;
       .match-info {
+        height: 60px;
         .tournament-name {
-          font-size: 1.5rem;
+          font-size: 1rem;
         }
         .category-name {
-          font-size: 1rem;
+          font-size: 0.8rem;
         }
       }
       .player-items {
         .playing-teams {
+          max-width: 90px;
+          .team-image {
+            min-height: 70px;
+          }
           .country {
             display: block;
-            margin-top: -15px;
-            font-size: 1.5rem;
+            margin-top: -5px;
+            font-size: 1.2rem;
           }
           .abbreviation {
             display: none;
           }
         }
         .score {
-          font-size: 1.5rem;
+          font-size: 1.2rem;
           .time {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
           }
           .date {
             font-size: 1.25rem;
@@ -172,8 +193,10 @@ h4 {
   .carousel {
     max-width: $desktop;
     .slide {
-      padding: 5px 25px 50px 25px;
+      padding: 5px 60px 50px 60px;
+      height: 550px;
       .match-info {
+        height: 100px;
         .tournament-name {
           font-size: 2.5rem;
         }
@@ -184,13 +207,14 @@ h4 {
       .player-items {
         padding: 5rem 0;
         .playing-teams {
+          max-width: 200px;
           .team-image {
             height: 150px;
           }
           .country {
             display: block;
-            margin-top: -20px;
-            font-size: 3rem;
+            margin-top: -5px;
+            font-size: 2rem;
           }
           .abbreviation {
             display: none;
@@ -200,11 +224,11 @@ h4 {
           margin-top: 20px;
           font-size: 2rem;
           .time {
-            font-size: 2rem;
+            font-size: 2.5rem;
             margin-top: 5px;
           }
           .date {
-            font-size: 1.5rem;
+            font-size: 2rem;
           }
         }
       }
@@ -212,22 +236,19 @@ h4 {
         p {
           padding: 0 25px;
           border-radius: 5px;
-          font-size: 1rem;
+          font-size: 1.5rem;
         }
       }
     }
   }
 }
 
-.right-arrow {
-  height: 100px;
-  width: 100px;
-}
-
-.red {
-  color: red;
-}
-
-.green {
-  color: green;
+.navigation-dots {
+  display: flex;
+  div {
+    width: 20px;
+    height: 20px;
+    background-color: #4d4d4d;
+    border-radius: 100%;
+  }
 }

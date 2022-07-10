@@ -51,11 +51,12 @@ h4 {
   max-width: 320px;
 }
 .carousel .slide {
-  min-height: 100%;
+  position: relative;
   border-radius: 0.75rem;
-  padding: 5px 15px 25px 15px;
+  padding: 5px 25px 25px 25px;
 }
 .carousel .slide .match-info {
+  height: 65px;
   text-align: center;
 }
 .carousel .slide .match-info .tournament-name {
@@ -71,12 +72,14 @@ h4 {
 }
 .carousel .slide .player-items {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   padding: 2rem 0;
+  max-height: 300px;
 }
 .carousel .slide .player-items .playing-teams {
   text-align: center;
-  font-size: 3rem;
+  font-size: 2rem;
+  max-width: 160px;
 }
 .carousel .slide .player-items .playing-teams .team-image {
   height: 50px;
@@ -90,20 +93,24 @@ h4 {
   font-size: 1rem;
 }
 .carousel .slide .player-items .score {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
   text-align: center;
   font-size: 1rem;
 }
-@media (min-width: 450px) {
-  .carousel .slide .player-items .score {
-    font-size: 1rem;
-  }
-}
 .carousel .slide .player-items .score .time {
-  font-size: 1rem;
+  font-size: 1.5rem;
 }
 .carousel .slide .player-items .score .date {
-  font-size: 0.7rem;
+  font-size: 1rem;
   margin-top: -5px;
+}
+.carousel .slide .match-state {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  bottom: 10%;
 }
 .carousel .slide .match-state p {
   background-color: #4d4d4d;
@@ -115,32 +122,50 @@ h4 {
   text-transform: uppercase;
 }
 
+.slide {
+  display: none;
+}
+
+.slide.active {
+  display: block;
+}
+
 @media (min-width: 450px) {
   .carousel {
     max-width: 450px;
   }
   .carousel .slide {
-    padding: 5px 25px 20px 25px;
+    padding: 5px 40px 20px 40px;
+    height: 260px;
+  }
+  .carousel .slide .match-info {
+    height: 60px;
   }
   .carousel .slide .match-info .tournament-name {
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
   .carousel .slide .match-info .category-name {
-    font-size: 1rem;
+    font-size: 0.8rem;
+  }
+  .carousel .slide .player-items .playing-teams {
+    max-width: 90px;
+  }
+  .carousel .slide .player-items .playing-teams .team-image {
+    min-height: 70px;
   }
   .carousel .slide .player-items .playing-teams .country {
     display: block;
-    margin-top: -15px;
-    font-size: 1.5rem;
+    margin-top: -5px;
+    font-size: 1.2rem;
   }
   .carousel .slide .player-items .playing-teams .abbreviation {
     display: none;
   }
   .carousel .slide .player-items .score {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
   .carousel .slide .player-items .score .time {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
   .carousel .slide .player-items .score .date {
     font-size: 1.25rem;
@@ -152,7 +177,11 @@ h4 {
     max-width: 870px;
   }
   .carousel .slide {
-    padding: 5px 25px 50px 25px;
+    padding: 5px 60px 50px 60px;
+    height: 550px;
+  }
+  .carousel .slide .match-info {
+    height: 100px;
   }
   .carousel .slide .match-info .tournament-name {
     font-size: 2.5rem;
@@ -163,13 +192,16 @@ h4 {
   .carousel .slide .player-items {
     padding: 5rem 0;
   }
+  .carousel .slide .player-items .playing-teams {
+    max-width: 200px;
+  }
   .carousel .slide .player-items .playing-teams .team-image {
     height: 150px;
   }
   .carousel .slide .player-items .playing-teams .country {
     display: block;
-    margin-top: -20px;
-    font-size: 3rem;
+    margin-top: -5px;
+    font-size: 2rem;
   }
   .carousel .slide .player-items .playing-teams .abbreviation {
     display: none;
@@ -179,28 +211,25 @@ h4 {
     font-size: 2rem;
   }
   .carousel .slide .player-items .score .time {
-    font-size: 2rem;
+    font-size: 2.5rem;
     margin-top: 5px;
   }
   .carousel .slide .player-items .score .date {
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
   .carousel .slide .match-state p {
     padding: 0 25px;
     border-radius: 5px;
-    font-size: 1rem;
+    font-size: 1.5rem;
   }
 }
 
-.right-arrow {
-  height: 100px;
-  width: 100px;
+.navigation-dots {
+  display: flex;
 }
-
-.red {
-  color: red;
-}
-
-.green {
-  color: green;
+.navigation-dots div {
+  width: 20px;
+  height: 20px;
+  background-color: #4d4d4d;
+  border-radius: 100%;
 }

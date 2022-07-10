@@ -113,10 +113,7 @@ function MatchCarousel() {
     return (
       <>
         <div className="carousel">
-          <Slide 
-            
-
-          />
+          <Slide />
           <div className="navigation-dots"></div>
         </div>
 

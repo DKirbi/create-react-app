@@ -41,7 +41,7 @@ function Slide(props) {
   }
   return (
     <>
-    {country.map((countries) => {
+    {country.map((countries, index) => {
       
       matchStates = countries.tournaments[0].matches[0].status.name;
     
@@ -84,7 +84,6 @@ function Slide(props) {
                 secondHalf={secondHalf ? 'mstate-sh' : ' '}
                 ended={ended ? 'mstate-end' : ' '}
                 halftime={halftime ? 'mstate-sh' : ''}
-                className='bob'
               />
             </div>
             <div> 
